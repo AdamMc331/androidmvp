@@ -18,8 +18,19 @@
 
 package com.antonioleiva.mvpexample.app.login;
 
-public interface LoginPresenter {
+/**
+ * Presenter that handles the logic of the login view.
+ */
+interface LoginPresenter {
+    /**
+     * Ensures the credentials entered match a user.
+     * @param username The user's username.
+     * @param password The user's password.
+     */
     void validateCredentials(String username, String password);
 
+    /**
+     * Handles the clearing of the view when it goes away.
+     */
     void onDestroy();
 }

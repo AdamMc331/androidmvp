@@ -18,16 +18,33 @@
 
 package com.antonioleiva.mvpexample.app.login;
 
-public interface LoginInteractor {
+/**
+ * Interface that defines how the user can interact with the login view.
+ */
+interface LoginInteractor {
 
     interface OnLoginFinishedListener {
+        /**
+         * Called if there's an issue with the username entered.
+         */
         void onUsernameError();
 
+        /**
+         * Called if there's an issue with the password entered.
+         */
         void onPasswordError();
 
+        /**
+         * Called when a login completes without error.
+         */
         void onSuccess();
     }
 
+    /**
+     * Performs the login action for a user.
+     * @param username The user's username.
+     * @param password The user's password.
+     * @param listener The callback to use when login completes.
+     */
     void login(String username, String password, OnLoginFinishedListener listener);
-
 }
