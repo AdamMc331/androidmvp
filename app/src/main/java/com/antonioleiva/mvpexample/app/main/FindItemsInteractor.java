@@ -20,11 +20,24 @@ package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
 
-public interface FindItemsInteractor {
+/**
+ * Interface for finding items to display on the home screen.
+ */
+interface FindItemsInteractor {
 
     interface OnFinishedListener {
+        /**
+         * Called when all of the items have been retrieved.
+         *
+         * @param items The items that were collected.
+         */
         void onFinished(List<String> items);
     }
 
+    /**
+     * Finds a list of items.
+     *
+     * @param listener The callback to use once items are found.
+     */
     void findItems(OnFinishedListener listener);
 }

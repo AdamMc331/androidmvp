@@ -20,13 +20,30 @@ package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
 
-public interface MainView {
+/**
+ * Interface of actions the MainView must adhere to.
+ */
+interface MainView {
 
+    /**
+     * Displays a progress indicator while items are fetched.
+     */
     void showProgress();
 
+    /**
+     * Removes the progress indicator.
+     */
     void hideProgress();
 
+    /**
+     * Sets the items for the home screen to display.
+     * @param items The items to display.
+     */
     void setItems(List<String> items);
 
+    /**
+     * Displays a message on the home screen.
+     * @param message The message to show.
+     */
     void showMessage(String message);
 }

@@ -19,18 +19,23 @@
 package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
+import java.util.Locale;
 
-public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
+/**
+ * Implementation of the MainPresenter interface.
+ */
+class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
 
     private MainView mainView;
     private FindItemsInteractor findItemsInteractor;
 
-    public MainPresenterImpl(MainView mainView, FindItemsInteractor findItemsInteractor) {
+    MainPresenterImpl(MainView mainView, FindItemsInteractor findItemsInteractor) {
         this.mainView = mainView;
         this.findItemsInteractor = findItemsInteractor;
     }
 
-    @Override public void onResume() {
+    @Override
+    public void onResume() {
         if (mainView != null) {
             mainView.showProgress();
         }
@@ -38,24 +43,27 @@ public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnF
         findItemsInteractor.findItems(this);
     }
 
-    @Override public void onItemClicked(int position) {
+    @Override
+    public void onItemClicked(int position) {
         if (mainView != null) {
-            mainView.showMessage(String.format("Position %d clicked", position + 1));
+            mainView.showMessage(String.format(Locale.getDefault(), "Position %d clicked", position + 1));
         }
     }
 
-    @Override public void onDestroy() {
+    @Override
+    public void onDestroy() {
         mainView = null;
     }
 
-    @Override public void onFinished(List<String> items) {
+    @Override
+    public void onFinished(List<String> items) {
         if (mainView != null) {
             mainView.setItems(items);
             mainView.hideProgress();
         }
     }
 
-    public MainView getMainView() {
+    MainView getMainView() {
         return mainView;
     }
 }

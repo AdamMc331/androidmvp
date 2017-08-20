@@ -18,11 +18,24 @@
 
 package com.antonioleiva.mvpexample.app.main;
 
-public interface MainPresenter {
+/**
+ * Presenter for the home view.
+ */
+interface MainPresenter {
 
+    /**
+     * Called when the home view comes back into focus.
+     */
     void onResume();
 
+    /**
+     * Called when an item on the home screen is clicked.
+     * @param position The index of the item in the list.
+     */
     void onItemClicked(int position);
 
+    /**
+     * Called when the home screen view goes away.
+     */
     void onDestroy();
 }

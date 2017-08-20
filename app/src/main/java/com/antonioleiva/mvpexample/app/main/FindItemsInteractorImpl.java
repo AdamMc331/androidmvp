@@ -23,15 +23,25 @@ import android.os.Handler;
 import java.util.Arrays;
 import java.util.List;
 
-public class FindItemsInteractorImpl implements FindItemsInteractor {
-    @Override public void findItems(final OnFinishedListener listener) {
+/**
+ * Implementation of the FindItemsInteractor interface.
+ */
+class FindItemsInteractorImpl implements FindItemsInteractor {
+    @Override
+    public void findItems(final OnFinishedListener listener) {
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 listener.onFinished(createArrayList());
             }
         }, 2000);
     }
 
+    /**
+     * Creates a dummy array list of items.
+     *
+     * @return A list of sample strings to use.
+     */
     private List<String> createArrayList() {
         return Arrays.asList(
                 "Item 1",
