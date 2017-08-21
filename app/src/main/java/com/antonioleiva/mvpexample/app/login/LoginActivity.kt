@@ -18,28 +18,30 @@
 
 package com.antonioleiva.mvpexample.app.login
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
-
 import com.antonioleiva.mvpexample.app.R
 import com.antonioleiva.mvpexample.app.main.MainActivity
 
 /**
  * Main entry point for the application that allows the user to login.
  */
-class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
-    private val progressBar: ProgressBar by lazy { findViewById(R.id.progress) as ProgressBar }
-    private val username: EditText by lazy { findViewById(R.id.username) as EditText }
-    private val password: EditText by lazy { findViewById(R.id.password) as EditText }
+class LoginActivity : Activity(), LoginView, View.OnClickListener {
+    private val progressBar: ProgressBar by lazy { findViewById<ProgressBar>(R.id.progress) }
+    private val username: EditText by lazy { findViewById<EditText>(R.id.username) }
+    private val password: EditText by lazy { findViewById<EditText>(R.id.password) }
     private val presenter: LoginPresenter by lazy { LoginPresenterImpl(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        findViewById<Button>(R.id.button).setOnClickListener(this)
     }
 
     override fun onDestroy() {

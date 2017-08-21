@@ -18,8 +18,8 @@
 
 package com.antonioleiva.mvpexample.app.main
 
+import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
 import com.antonioleiva.mvpexample.app.R
@@ -27,10 +27,10 @@ import com.antonioleiva.mvpexample.app.R
 /**
  * Displays the home page to the user.
  */
-class MainActivity : AppCompatActivity(), MainView, AdapterView.OnItemClickListener {
+class MainActivity : Activity(), MainView, AdapterView.OnItemClickListener {
 
-    private val listView: ListView by lazy { findViewById(R.id.list) as ListView }
-    private val progressBar: ProgressBar by lazy { findViewById(R.id.progress) as ProgressBar }
+    private val listView: ListView by lazy { findViewById<ListView>(R.id.list) }
+    private val progressBar: ProgressBar by lazy { findViewById<ProgressBar>(R.id.progress) }
     private val presenter: MainPresenter by lazy { MainPresenterImpl(this, FindItemsInteractorImpl()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
