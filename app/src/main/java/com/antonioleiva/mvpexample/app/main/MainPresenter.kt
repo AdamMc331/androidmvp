@@ -16,28 +16,26 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
-
-import java.util.List;
+package com.antonioleiva.mvpexample.app.main
 
 /**
- * Interface for finding items to display on the home screen.
+ * Presenter for the home view.
  */
-interface FindItemsInteractor {
-
-    interface OnFinishedListener {
-        /**
-         * Called when all of the items have been retrieved.
-         *
-         * @param items The items that were collected.
-         */
-        void onFinished(List<String> items);
-    }
+internal interface MainPresenter {
 
     /**
-     * Finds a list of items.
-     *
-     * @param listener The callback to use once items are found.
+     * Called when the home view comes back into focus.
      */
-    void findItems(OnFinishedListener listener);
+    fun onResume()
+
+    /**
+     * Called when an item on the home screen is clicked.
+     * @param position The index of the item in the list.
+     */
+    fun onItemClicked(position: Int)
+
+    /**
+     * Called when the home screen view goes away.
+     */
+    fun onDestroy()
 }

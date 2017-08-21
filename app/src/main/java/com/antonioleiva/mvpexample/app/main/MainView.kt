@@ -16,26 +16,32 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.antonioleiva.mvpexample.app.main
 
 /**
- * Presenter for the home view.
+ * Interface of actions the MainView must adhere to.
  */
-interface MainPresenter {
+internal interface MainView {
 
     /**
-     * Called when the home view comes back into focus.
+     * Displays a progress indicator while items are fetched.
      */
-    void onResume();
+    fun showProgress()
 
     /**
-     * Called when an item on the home screen is clicked.
-     * @param position The index of the item in the list.
+     * Removes the progress indicator.
      */
-    void onItemClicked(int position);
+    fun hideProgress()
 
     /**
-     * Called when the home screen view goes away.
+     * Sets the items for the home screen to display.
+     * @param items The items to display.
      */
-    void onDestroy();
+    fun setItems(items: List<String>)
+
+    /**
+     * Displays a message on the home screen.
+     * @param message The message to show.
+     */
+    fun showMessage(message: String)
 }

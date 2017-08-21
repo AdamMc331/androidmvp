@@ -16,34 +16,22 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.antonioleiva.mvpexample.app.main
 
-import java.util.List;
+import android.os.Handler
 
 /**
- * Interface of actions the MainView must adhere to.
+ * Implementation of the FindItemsInteractor interface.
  */
-interface MainView {
+internal class FindItemsInteractorImpl : FindItemsInteractor {
+    override fun findItems(listener: FindItemsInteractor.OnFinishedListener) {
+        Handler().postDelayed({ listener.onFinished(createArrayList()) }, 2000)
+    }
 
     /**
-     * Displays a progress indicator while items are fetched.
+     * Creates a dummy array list of 10 items.
+     *
+     * @return A list of sample strings to use.
      */
-    void showProgress();
-
-    /**
-     * Removes the progress indicator.
-     */
-    void hideProgress();
-
-    /**
-     * Sets the items for the home screen to display.
-     * @param items The items to display.
-     */
-    void setItems(List<String> items);
-
-    /**
-     * Displays a message on the home screen.
-     * @param message The message to show.
-     */
-    void showMessage(String message);
+    private fun createArrayList(): List<String> = (1..10).map { "Item $it" }
 }
