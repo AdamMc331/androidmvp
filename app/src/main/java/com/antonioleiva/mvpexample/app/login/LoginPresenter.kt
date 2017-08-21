@@ -16,35 +16,21 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.login;
+package com.antonioleiva.mvpexample.app.login
 
 /**
- * Interface that defines how the user can interact with the login view.
+ * Presenter that handles the logic of the login view.
  */
-interface LoginInteractor {
-
-    interface OnLoginFinishedListener {
-        /**
-         * Called if there's an issue with the username entered.
-         */
-        void onUsernameError();
-
-        /**
-         * Called if there's an issue with the password entered.
-         */
-        void onPasswordError();
-
-        /**
-         * Called when a login completes without error.
-         */
-        void onSuccess();
-    }
-
+internal interface LoginPresenter {
     /**
-     * Performs the login action for a user.
+     * Ensures the credentials entered match a user.
      * @param username The user's username.
      * @param password The user's password.
-     * @param listener The callback to use when login completes.
      */
-    void login(String username, String password, OnLoginFinishedListener listener);
+    fun validateCredentials(username: String, password: String)
+
+    /**
+     * Handles the clearing of the view when it goes away.
+     */
+    fun onDestroy()
 }

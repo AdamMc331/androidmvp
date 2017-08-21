@@ -16,34 +16,34 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.login;
+package com.antonioleiva.mvpexample.app.login
 
 /**
  * Interface that handles all of the actions the View must adhere to.
  */
-interface LoginView {
+internal interface LoginView {
     /**
      * Displays a progress indicator while the user is logging in.
      */
-    void showProgress();
+    fun showProgress()
 
     /**
      * Removes any progress indicator.
      */
-    void hideProgress();
+    fun hideProgress()
 
     /**
      * Displays an error for an incorrect username.
      */
-    void setUsernameError();
+    fun setUsernameError()
 
     /**
      * Displays an error for an incorrect password.
      */
-    void setPasswordError();
+    fun setPasswordError()
 
     /**
      * Navigates beyond the login screen to the home screen.
      */
-    void navigateToHome();
+    fun navigateToHome()
 }
